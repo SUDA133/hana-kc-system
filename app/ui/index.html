@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KC 知识库</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main id="app">
+  <header class="topbar">
+    <div class="brand"><img src="./assets/nav.svg" alt=""><div><h1>KC 知识库</h1><p>让经验有出处，让知识有边界</p></div></div>
+    <nav aria-label="主视图"><button class="tab selected" data-view="cards" aria-pressed="true">知识库</button><button class="tab" data-view="candidates" aria-pressed="false">候选审阅</button><button class="tab" data-view="status" aria-pressed="false">运行状态</button></nav>
+    <div class="appearance-tools">
+      <label class="sr-only" for="theme-mode">页面主题</label>
+      <select id="theme-mode" aria-label="页面主题" title="默认跟随 Hana 的界面主题"><option value="system">跟随 Hana</option><option value="light">浅色</option><option value="dark">深色</option></select>
+      <button id="refresh" class="quiet">刷新</button>
+    </div>
+  </header>
+  <div id="theme-notice" role="status" aria-live="polite" hidden></div>
+  <div id="notice" role="status" aria-live="polite" hidden></div>
+  <section id="workspace" class="workspace">
+    <aside id="filters" class="filters">
+      <p class="eyebrow">筛选范围</p>
+      <label for="agent">所属 Agent</label><select id="agent"><option value="all">全部 Agent</option></select>
+      <label for="lifecycle">使用状态</label><select id="lifecycle"><option value="visible">可用</option><option value="disabled">已停用</option><option value="archived">已归档</option><option value="all">全部</option></select>
+      <div id="facets" class="filter-info"></div>
+      <p class="footnote">可检索与已发布是系统状态，内容仍需结合来源及适用范围判断。</p>
+    </aside>
+    <section class="list-pane" aria-label="卡片列表">
+      <form id="search-form" class="search"><label class="sr-only" for="search">搜索关键词或摘要</label><input id="search" type="search" placeholder="搜索关键词、摘要…" maxlength="2000" autocomplete="off"><button type="submit">搜索</button></form>
+      <div id="candidate-filter" hidden><label for="candidate-status">候选状态</label><select id="candidate-status"><option value="pending">待审阅</option><option value="all">全部候选</option><option value="published">已发布</option><option value="rejected">已驳回</option><option value="publishing">发布中</option><option value="conflict">冲突</option><option value="already-present">内容已存在</option><option value="published-superseded">已被后续内容替代</option></select></div>
+      <div class="list-heading"><span id="count">正在连接…</span><button id="clear" class="text-button">清空筛选</button></div>
+      <p id="search-hint" class="hint">匹配关键词与摘要，按相关度排列。</p>
+      <div id="list" class="card-list" aria-live="polite"></div>
+      <footer class="pager"><button id="prev" class="quiet" disabled>上一页</button><span id="page">第 1 页</span><button id="next" class="quiet" disabled>下一页</button></footer>
+    </section>
+    <section id="detail" class="detail-pane" aria-label="卡片详情"><div class="empty"><span class="empty-symbol">◇</span><h2>从一张卡片开始</h2><p>选择左侧记录，阅读内容、来源与适用范围。</p></div></section>
+  </section>
+  <section id="status-page" class="status-page" hidden></section>
+</main>
+<script type="module" src="./app.js"></script>
+</body>
+</html>

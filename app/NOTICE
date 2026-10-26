@@ -1,0 +1,15 @@
+KC System 1.0.0
+Copyright 2026 SUDA133 and contributors.
+
+KC System application code and original SVG artwork are licensed under Apache-2.0.
+The application includes unmodified runtime files from the Hana App SDK,
+part of HanaAgent / OpenHanako, developed by liliMozi and contributors:
+https://github.com/liliMozi/openhanako
+The SDK is distributed under Apache-2.0. See app/sdk/LICENSE.
+The frontend includes the unmodified Hana UI SDK bridge in app/ui/assets/hana-ui.js.
+Third-party attribution supplied by Hana is retained in app/sdk/THIRD_PARTY_NOTICES.txt.
+
+This project is an independent community application. HanaAgent trademarks
+and third-party packages remain the property of their respective owners.
+No user knowledge records, conversations, credentials, runtime state or
+production backups are included in this source distribution.

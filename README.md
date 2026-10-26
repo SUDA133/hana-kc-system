@@ -49,11 +49,10 @@ node scripts/audit-release.mjs
 
 测试只创建合成数据。运行后会留下被 Git 忽略的 `.fixture-*` 临时目录；源码打包器按明确清单生成归档，不会把这些目录带入。
 
-在已安装官方 `hana-app-creator` 作者工具的环境中，复制 `app/` 到名为 `kc-system` 的构建目录，再调用官方校验器和打包器：
+在已安装官方 `hana-app-creator` 作者工具的环境中，用随附脚本把 `app/` 复制到全新的 `build/kc-system/` 并调用官方打包器，再验证最终安装 ZIP：
 
 ```sh
-node <hana-app-creator>/scripts/validate_app.mjs --dir build/kc-system --smoke --json
-node <hana-app-creator>/scripts/pack_app.mjs --dir build/kc-system --publisher SUDA133 --out dist
+python scripts/package-app.py --creator <hana-app-creator> --publisher SUDA133
 node <hana-app-creator>/scripts/validate_app.mjs --archive dist/app-kc-system-1.0.0.zip --smoke --json
 python scripts/source-zip.py
 ```

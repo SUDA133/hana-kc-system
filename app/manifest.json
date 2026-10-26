@@ -1,0 +1,56 @@
+{
+  "manifestVersion": 2,
+  "id": "kc-system",
+  "name": "KC System",
+  "version": "1.0.0",
+  "description": "本地知识卡片库：检索与候选审阅、归档和有效期管理、运行诊断，支持浅色、深色与跟随 Hana 主题。", 
+  "entry": "index.js",
+  "capabilities": [
+    "app/tools.expose-to-model",
+    "app/hooks.tools-pre-execute",
+    "app/hooks.tools-post-execute",
+    "app/hooks.agent-before-start",
+    "app/services.provide",
+    "app/public-data.publish",
+    "app/public-data.read"
+  ],
+  "contributes": {
+    "cards": [
+      {
+        "id": "knowledge",
+        "title": "KC 知识库",
+        "description": "浏览、检索知识卡片，审阅候选并查看系统状态。",
+        "route": "/index.html",
+        "realization": "page",
+        "cardForm": "structural",
+        "siteNavEntry": true,
+        "face": { "image": "assets/cover.svg" },
+        "pageIcon": "assets/nav.svg"
+      }
+    ],
+    "settings": {
+      "title": "KC System",
+      "schema": {
+        "properties": {
+          "autoCapture": {
+            "type": "boolean",
+            "title": "自动收集知识候选",
+            "description": "仅从成功代理结果提取未发布候选；不会自动写入正式知识库。",
+            "default": true,
+            "scope": "global"
+          },
+          "mode": {
+            "type": "string",
+            "title": "运行模式",
+            "description": "兼容字段；两种模式均不拦截普通工具，写库和删除保护在各自操作内执行。",
+            "enum": ["observe", "enforce"],
+            "default": "observe",
+            "scope": "global"
+          }
+        }
+      }
+    }
+  },
+  "icon": "assets/icon.svg",
+  "minAppVersion": "1.0.11-beta"
+}
